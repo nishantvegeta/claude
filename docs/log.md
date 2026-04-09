@@ -171,6 +171,74 @@ SNAPSHOT_UPDATED: No (snapshot.md refresh pending)
 MESSAGE: APIDOC v1.0.0 generated successfully. 1 endpoint, 2 data models, complete authentication/rate limit/error documentation. FEAT linked. Ready for QA review and publication.
 ```
 
+## INGEST: FRS-UC-00008
+
+```
+TIMESTAMP: 2026-04-09T11:30:00Z
+OPERATION: INGEST
+FRS_ID: FRS-UC-00008
+STATUS: QA_PASS
+REASON: Clean single-use-case FRS for Request Detail View feature
+SIGNALS: 1 (Multiple actors; below monolith threshold of 2)
+CNF_CREATED: None
+STAGING_FILE: staging/FRS-UC-00008.staged.md
+CANDIDATE_NODES: 7 (ACT-3, ENT-1, CMD-1, FLOW-1, STATE-1, DEC-1)
+PRE_SCAN_CONFLICT: false
+MESSAGE: Staging entry written. FRS-UC-00008 (Request Detail View) ready for ABSORB.
+```
+
+---
+
+## ABSORB: FRS-UC-00008
+
+```
+TIMESTAMP: 2026-04-09T11:45:00Z
+OPERATION: ABSORB
+FRS_ID: FRS-UC-00008
+STATUS: QA_PASS
+REASON: All 5 candidates compiled to DDD nodes, no conflicts detected
+NODES_CREATED: 5 (new)
+NODES_REUSED: 3 (ACT-CompanySuperAdmin, ACT-System, ENT-Request from FRS-5)
+NODE_IDS: ACT-BankReviewer, CMD-ViewRequestDetails, FLOW-ViewRequestDetail, STATE-RequestStatus, DEC-AccessControl
+MODULE: Request Detail View
+CNF_RAISED: 0
+PRE_SCAN_CONFLICTS: false
+DEPRECATION_PROPAGATION: Not applicable (no deprecations)
+INDEX_WRITTEN: Yes (5 new entries; 3 reused entries already present)
+SNAPSHOT_REBUILT: Yes (dirty=true → awaiting RECOVER auto-trigger)
+MESSAGE: FRS-UC-00008 successfully absorbed. 5 new draft nodes created in Request Detail View module; 3 nodes reused from Task Management module. index.md and snapshot updated.
+```
+
+---
+
+## COMPILE: Request Detail View
+
+```
+TIMESTAMP: 2026-04-09T11:50:00Z
+OPERATION: COMPILE
+MODULE: Request Detail View
+STATUS: QA_PASS
+SOURCE_FRS: FRS-UC-00008
+NODES_AGGREGATED: 5 (ACT-BankReviewer, CMD-ViewRequestDetails, FLOW-ViewRequestDetail, STATE-RequestStatus, DEC-AccessControl)
+SCENARIO_GAPS: 0 (FLOW-ViewRequestDetail has complete Shadow QA)
+CIRCULAR_DEPS: 0
+MINI_LINT: PASS
+FEAT_CREATED: FEAT-RequestDetailView-001
+FEAT_STATUS: approved (BA role auto-approve)
+AUTO_APPROVED_BY: BA (from CLAUDE.md)
+LINKED_ACTORS: ACT-CompanySuperAdmin, ACT-BankReviewer, ACT-System
+LINKED_ENTITIES: ENT-Request
+LINKED_COMMANDS: CMD-ViewRequestDetails
+LINKED_FLOWS: FLOW-ViewRequestDetail
+LINKED_STATES: STATE-RequestStatus
+LINKED_DECISIONS: DEC-AccessControl
+SHADOW_QA_LINKED: Yes (FLOW-ViewRequestDetail#Shadow-QA)
+INDEX_WRITTEN: Yes (1 entry)
+MESSAGE: Feature Spec created and auto-approved by BA role. Ready for GitLab issue creation via ISSUE command or post-issues skill.
+```
+
+---
+
 ## Session History
 
 (Entries appended chronologically)

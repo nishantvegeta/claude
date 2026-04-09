@@ -6,3 +6,4 @@
 - **Architecture:** ABP Framework with Domain-Driven Design
 - **Repository:** https://gitlab.local:8080/root/artifacts
 - **Role:** BA
+- **allowed_labels:** [backend, api, frontend, research, ui, test, qa, feature-spec]
